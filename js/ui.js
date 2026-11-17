@@ -26,7 +26,6 @@
   }
   function missingPhotosNote() {
     const miss = PC.PLAYERS.filter(p => !PC.hasPhoto(p.id)).length;
-    return miss ? `<div class="notice">Faltan ${miss} de ${PC.PLAYERS.length} fotos de jugadores: se muestran retratos provisionales con las iniciales y el dorsal. Ver LEEME.md para incorporarlas.</div>` : '';
   }
   function sound(n) { PC.Audio.play(n); }
   function setScreen(name, html, cls) {
