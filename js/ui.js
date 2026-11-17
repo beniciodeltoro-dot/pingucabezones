@@ -149,7 +149,6 @@
     setScreen('select', `<h2>ELEGÍ TU JUGADOR</h2><p class="sub">${head}</p>
       <div class="row" style="margin-bottom:10px">${crest(ctx.userTeam, 'crest-s').replace('class="crest-s"', 'height="48"')}<b style="font-size:20px">${esc(tm.name)}</b></div>
       <div class="players" role="listbox">${PC.teamPlayers(ctx.userTeam).map(p => playerCard(p, App.sel === p.id, 'pickplayer')).join('')}</div>
-      ${missingPhotosNote()}
       <div class="row" style="margin-top:18px">${back(ctx.mode === 'league' ? 'champ' : 'friendly')}<button class="btn primary" data-act="confirm-player" ${App.sel ? '' : 'disabled'} id="confirmBtn">CONFIRMAR →</button></div>`);
   };
   App.showPrematch = function () {
