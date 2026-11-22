@@ -1,5 +1,0 @@
-// Servidor estático mínimo para pruebas (puerto 8123). El juego también se puede abrir con cualquier servidor estático.
-const http = require('http'), fs = require('fs'), path = require('path');
-const root = path.join(__dirname, '..'); const T = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg', '.woff': 'font/woff', '.woff2': 'font/woff2' };
-module.exports = (port = 8123) => new Promise(res => { const s = http.createServer((q, r) => { let p = decodeURIComponent(q.url.split('?')[0]); if (p === '/') p = '/index.html'; const f = path.join(root, p); if (!f.startsWith(root) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { r.writeHead(404); r.end('no'); return; } r.writeHead(200, { 'Content-Type': T[path.extname(f)] || 'application/octet-stream' }); fs.createReadStream(f).pipe(r); }).listen(port, () => res(s)); });
-if (require.main === module) module.exports().then(() => console.log('Pingu Cup en http://localhost:8123'));
